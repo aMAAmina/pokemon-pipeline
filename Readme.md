@@ -1,5 +1,5 @@
 #### Description
-This a one day hackathon project with Arkx, basically a pipline that fetchs data from the API `https://pokeapi.co/api/v2/pokemon` and gors through ingestion and transformation to eventually generate cleaned data in a CSV format.
+This a one day hackathon project with Arkx, basically a pipline that fetchs data from the API `https://pokeapi.co/api/v2/pokemon` and goes through ingestion and transformation to eventually generate cleaned data in a CSV format.
 The pipeline gives a detailed report at the end of the process.
 
 #### Technologies Used

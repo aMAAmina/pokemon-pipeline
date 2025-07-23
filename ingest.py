@@ -1,7 +1,8 @@
-def ingest():
+def ingest(count=None):
     import requests
     import os,json
     import time
+    from datetime import datetime
 
     print("Starting data ingestion...")
     max_retries = 5
@@ -15,6 +16,8 @@ def ingest():
             response = requests.get(url)
             response.raise_for_status()
             pokemon_list = response.json()["results"]
+            if count:
+                pokemon_list = pokemon_list[:count]
             detailed_data = []
 
             for pokemon in pokemon_list:
@@ -23,9 +26,9 @@ def ingest():
                     detailed_data.append(poke_response.json())
 
             os.makedirs("data/raw", exist_ok=True)
-            with open("data/raw/pokemon_raw.json", "w") as f:
+            timestamp = datetime.now().strftime("%Y-%m-%dT%H-%M")
+            with open(f"data/raw/pokemon_raw_{timestamp}.json", "w") as f:
                 json.dump(detailed_data, f, indent=2)
-
             return len(pokemon_list)
 
         except requests.exceptions.RequestException as e:
@@ -35,4 +38,3 @@ def ingest():
             delay *= 2
 
     raise Exception("Failed to fetch data after multiple retries.")
-

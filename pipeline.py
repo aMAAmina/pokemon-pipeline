@@ -5,22 +5,23 @@ import time
 
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description="run data pipeline")
-    parser.add_argument('--skip-ingest', action='store_true', help='skip ingestion')
-    parser.add_argument('--format', choices=['csv','parquet'], default='csv', help='Output format: csv or parquet (default: csv)')
+    parser.add_argument('--filter', help='filter based on type; eg: keep water type pokemon')
+    parser.add_argument('--count', help='fetch the first 20 pokemons for example')
     args = parser.parse_args()
 
     print("start pipeline ...")
-    if not args.skip_ingest:
-        ingest_exec_time = time.perf_counter()
-        fetched_pok = ingest()
-        ingest_exec_time = time.perf_counter()-ingest_exec_time 
-        ingest_status = "success"
-    else:
+    
+    ingest_exec_time = time.perf_counter()
+    count = int(args.count) if args.count else None
+    fetched_pok = ingest(count=count)
+    ingest_exec_time = time.perf_counter()-ingest_exec_time 
+    ingest_status = "success"
+    if not fetched_pok:
         ingest_status = "failed or skipped"
         ingest_exec_time = 0.0
     
     trans_exec_time = time.perf_counter()
-    processed_pok = transform()
+    processed_pok = transform(filter_type=args.filter)
     trans_exec_time = time.perf_counter()-trans_exec_time 
     if trans_exec_time > 0:
         trans_status = "success"
