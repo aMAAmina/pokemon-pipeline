@@ -1,8 +1,14 @@
 certifi==2025.7.14
 charset-normalizer==3.4.2
 idna==3.10
+iniconfig==2.1.0
 numpy==2.3.1
+packaging==25.0
 pandas==2.3.1
+pluggy==1.6.0
+-e git+https://github.com/aMAAmina/pokemon-pipeline.git@d2337026d9e28c254b0389bbcadac591ee2c6401#egg=pokemon_pipeline
+Pygments==2.19.2
+pytest==8.4.1
 python-dateutil==2.9.0.post0
 pytz==2025.2
 requests==2.32.4

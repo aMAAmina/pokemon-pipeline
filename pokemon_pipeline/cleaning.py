@@ -64,4 +64,5 @@ def filter_by_type(df: pd.DataFrame, filter_type: str) -> pd.DataFrame:
         pd.DataFrame: all pokemons with the specific type 
     """
     df = df[df["pokemon_types"].apply(lambda types: filter_type in types)]
+    df = df.reset_index(drop=True)
     return df

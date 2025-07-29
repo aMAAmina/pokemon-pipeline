@@ -1,7 +1,7 @@
 #### Description
-This a one day hackathon project with Arkx, basically a pipline that fetchs data from the API `https://pokeapi.co/api/v2/pokemon` and goes through ingestion and transformation to eventually generate cleaned data in a CSV format.
+This started as a one day hackathon project with Arkx, basically a pipline that fetchs data from the API `https://pokeapi.co/api/v2/pokemon` and goes through ingestion and transformation to eventually generate cleaned data in a CSV format.
 The pipeline gives a detailed report at the end of the process.
-
+But evolved to a bootcamp project.
 #### Technologies Used
 - Python
 - Pandas
@@ -21,3 +21,6 @@ By eye inspection, these columns were found to be meaningful and included in the
 2. Install the required packages using `pip install -r requirements.txt`.
 3. Run the script using `python pipeline.py`.
 4. The output will be saved in `data/raw` and `data/processed`.
+
+#### Bootcamp evolution
+1. - [ReadmeDay1](pokeops/Readmeday1.md) Refactor pokemon pipeline into a python package named pokeops.
