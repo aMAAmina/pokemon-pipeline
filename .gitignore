@@ -1,3 +1,6 @@
 .ven/
 __pycache__/
 *.pyc
+*.pyo
+data/
+*.egg-info/
